@@ -1,4 +1,7 @@
 #include "get_next_line.h"
+// test
+# include <fcntl.h>
+# include <stdio.h>
 
 int	main(void)
 {

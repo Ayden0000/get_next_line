@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "get_next_line.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -21,21 +21,26 @@ void	*ft_calloc(size_t count, size_t size)
 	tmp = malloc(count * size);
 	if (!tmp)
 		return (NULL);
-	while (i++ < count)
+	while (i < count)
+	{
 		tmp[i] = 0;
+		i++;
+	}
 	return (tmp);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (!(*s))
+	if (!s)
+		return (NULL);
+	while (*s)
 	{
 		if (*s == (char)c)
-			return (s);
+			return ((char *)s);
 		s++;
 	}
 	if ((char)c == '\0')
-		return (s);
+		return ((char *)s);
 	return (NULL);
 }
 
@@ -43,6 +48,8 @@ static size_t	ft_strlen(const char *s)
 {
 	const char	*p;
 
+	if(!s)
+		return (0);
 	p = s;
 	while (*p)
 		p++;
@@ -56,7 +63,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	int		i;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);

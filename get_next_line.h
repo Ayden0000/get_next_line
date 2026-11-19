@@ -24,9 +24,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// test
-# include <fcntl.h>
-# include <stdio.h>
 
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t count, size_t size);
